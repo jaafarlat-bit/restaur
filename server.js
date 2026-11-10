@@ -79,6 +79,6 @@ app.get('/api/menu/:slug', (q, s) => {
   r ? s.json(pub(r)) : s.status(404).json({ error: '404' });
 });
 app.use('/img', express.static(path.join(DATA, 'img'), { maxAge: '30d' }));
-app.get(['/', '/admin', '/r/:slug'], (q, s) => s.sendFile(path.join(__dirname, 'public', 'app.html')));
+app.get(['/', '/admin', '/r/:slug'], (q, s) => s.sendFile(path.join(__dirname, 'app.html')));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log('http://localhost:' + PORT));
