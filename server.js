@@ -112,6 +112,16 @@ app.post('/api/reset', (q, s) => {
   r.pw = hash(String(b.password), r.salt);
   save(); s.json({ ok: true });
 });
+app.get('/api/export', auth, (q, s) => {
+  const r = q.r;
+  const items = r.items.map(i => {
+    const o = Object.assign({}, i);
+    if (i.img) { try { o.imgData = 'data:image/jpeg;base64,' + fs.readFileSync(path.join(DATA, 'img', i.img)).toString('base64'); } catch (e) {} }
+    return o;
+  });
+  s.setHeader('Content-Disposition', 'attachment; filename="seed.json"');
+  s.json({ name: r.name, slug: r.slug, wa: r.wa, items });
+});
 app.get('/api/me', auth, (q, s) => s.json(pub(q.r)));
 app.put('/api/me', auth, (q, s) => {
   const { name, wa } = q.body || {};
@@ -145,5 +155,24 @@ app.get('/api/menu/:slug', (q, s) => {
 });
 app.use('/img', express.static(path.join(DATA, 'img'), { maxAge: '30d' }));
 app.get(['/', '/admin', '/reset', '/nouveau-mot-de-passe', '/r/:slug'], (q, s) => s.sendFile(path.join(__dirname, 'app.html')));
+(function seedDemo() {
+  try {
+    const f = path.join(__dirname, 'seed.json');
+    const email = (process.env.DEMO_EMAIL || '').trim().toLowerCase(), pw = process.env.DEMO_PASSWORD || '';
+    if (!fs.existsSync(f) || !email || pw.length < 6) return;
+    const d = JSON.parse(fs.readFileSync(f, 'utf8'));
+    (d.items || []).forEach(i => {
+      if (/^[a-f0-9]{32}\.jpg$/.test(i.img || '') && i.imgData) {
+        const p = path.join(DATA, 'img', i.img);
+        if (!fs.existsSync(p)) fs.writeFileSync(p, Buffer.from(String(i.imgData).split(',')[1], 'base64'));
+      }
+    });
+    if (db.restaurants.some(r => r.slug === d.slug || r.email.toLowerCase() === email)) return;
+    const salt = crypto.randomBytes(16).toString('hex');
+    db.restaurants.push({ id: crypto.randomUUID(), name: d.name, slug: d.slug, wa: d.wa || '', email, salt, pw: hash(pw, salt),
+      items: (d.items || []).map(i => { const o = Object.assign({}, i); delete o.imgData; return o; }) });
+    save(); console.log('Restaurant de démonstration restauré :', d.slug);
+  } catch (e) { console.log('Restauration ignorée :', e.message); }
+})();
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log('http://localhost:' + PORT));
