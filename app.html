@@ -3,65 +3,70 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Menu digital</title>
+<title>Orderely – Menu digital</title>
+<meta name="theme-color" content="#E4572E">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAMFBMVEX//fb969/1uYfwmHDqelHmYzvkWTDlWC/lVy7kVy/kVy7jVy7kVSzjUCfiTCHOTihhIypkAAADKUlEQVR42u2V3UsUURiHf2d20sicOa5RuKW7FkVpHyNKGRsxpRSkBQVWRolQQhd9XVRIhaAF5UWUFRF9UNBF9kEfalCw5JaLEq1kunhXzWqwFZtzZk0R2/V0oenkjv0FnauZw8P7nvN7n2HIA/x7CfgPAID492usGbOUfwD+VZXyj/MFUwLh/aEKY3HdqXVTANH8o806Pr5tq1KtgbboKwbobO2jwMSmrWSiQHEJszsyp+vhSMhlVaHtIbMX1SFU/PnF64AFECvdRIr3VyLBlx2+KinxQfF5bHZlU2Gh+9xW/oaNb5Nxo1q6Xu9OVgE4Z7p/dgbiWxBNqPUBEG4Muzpp/CxiO1haEwA4tL46frwjDuAZzN4BAJ+QnMl7mMUh4cR8QLhDDkbArMZNgFoX0pCogU7hQ5Fe03kBVWQKYTgaMFTKbBo3dTABBIZYjsNYCMiwuCYMML4IIGUAhxwPiBEa2tNTjjlP0X2YONX4CvX0h3NkATmkIPKenLBoIeWM7GzuPavBf0xLDVoAWZdId7XnMffnl9Eldy2MEuq/DT64N7u3xH9tuFWwMmrpvuXGxvxdFe18aQux8AGxhDPvCQVnqW13FKskbW8bM7muM7v7vGKtfV6tb/Nn2N2VJuvN2gNz629vJPeUKy7T3tgZYs2iCsCDDRk3ZymAZ/wTHgPe1HwNAMj71jvW7c/DGBBdUeYo9RLuz5ohzmSEJ7RmJcl5JqAl0P/pHeWRbekX5R5XXwrbO/I4EtYmAKHi4/pUjUh9y7/MSGBieJ7Qb2Q4toznEFti6JRp0gc6rav7Qs+v/lZKNZw0BcUAEPJMoFyicCgjMpKkflOStvsZ1ZoCcIZIDoCkHDBp6LKpgrTeJ1bJoXTjS/qHI4OnB4JBluMyzyL7QO7LM40NTY9WNq7OrnnZUO++aixTzUH5t1/fIONZEZ7vGmBJid+dyVsbAn+NmxO0gzIiM4Bwm9JVfkuZ5ENsJ7xq1KfCqyL6JOYtmOwDBUa7qoDYYSuI88HwiFGsgUeMAoWwUq6dEt22LMgJGM+1MioPHNSYTziQolsBfDRzDkD//1ucvH4DlyQzq4GjbsIAAAAASUVORK5CYII=">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-:root{--bg:#fff;--sf:#f1f3fb;--tx:#16183a;--mu:#585d85;--pr:#2a3fb5;--ac:#f0a92b;--ln:#dde1f1;--rd:#b3261e}
+:root{--bg:#FFF4EA;--sf:#FFFFFF;--tx:#2B1B14;--mu:#6B5649;--pr:#E4572E;--prd:#B8401C;--ac:#F6AE2D;--ln:#EBD9C8;--tint:#FDE3D6;--rd:#B3261E}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 Cairo,"Segoe UI",Tahoma,Arial,sans-serif}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer}
-:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+:focus-visible{outline:3px solid var(--tx);outline-offset:2px}
 .wrap{max-width:720px;margin:0 auto;padding:0 16px 60px}
-.hd{position:sticky;top:0;z-index:5;background:var(--pr);color:#fff}
+.hd{position:sticky;top:0;z-index:5;background:var(--pr);color:var(--bg)}
 .hd .in{max-width:720px;margin:0 auto;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .brand{display:flex;align-items:center;gap:12px;min-width:0}
-.brand h1{margin:0;font-size:22px;font-weight:800;line-height:1.2}
-.brand p{margin:0;font-size:14px;opacity:.85}
-.pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:999px;padding:6px 14px;font-weight:600;font-size:14px;text-decoration:none}
+.brand h1{margin:0;font:800 22px/1.2 Georgia,"Times New Roman",Cairo,serif}
+.brand p{margin:0;font-size:14px;color:var(--tx)}
+.pill{background:var(--bg);border:0;color:var(--tx);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px;text-decoration:none}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:14px 16px;max-width:720px;margin:0 auto}
 .chips button{flex:none;background:var(--sf);border:1px solid var(--ln);border-radius:999px;padding:8px 18px;font-weight:600}
-.chips .on{background:var(--tx);color:#fff;border-color:var(--tx)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:14px;max-width:720px;margin:0 auto;padding:0 16px 120px}
-.card{border:1px solid var(--ln);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.card.off{opacity:.5}
+.chips .on{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:14px;max-width:720px;margin:0 auto;padding:0 16px 16px}
+.powered{text-align:center;color:var(--mu);font-size:14px;margin:0;padding:8px 16px 110px}
+.card{border:1px solid var(--ln);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;background:var(--sf)}
+.card.off{opacity:.55}
 .card img,.noimg{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
-.noimg{background:var(--sf);color:var(--pr);display:grid;place-items:center;font-size:44px;font-weight:800}
+.noimg{background:var(--tint);color:var(--prd);display:grid;place-items:center;font:800 44px/1 Georgia,"Times New Roman",Cairo,serif}
 .cb{padding:10px 12px 12px;display:flex;flex-direction:column;gap:8px;flex:1;justify-content:space-between}
 .cb>b{font-weight:600;line-height:1.3}
 .cr{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .cr>span{color:var(--mu);font-weight:600}
-.add,.qty button{border:0;border-radius:999px;background:var(--pr);color:#fff;font-weight:700}
+.add,.qty button{border:0;border-radius:999px;background:var(--pr);color:var(--tx);font-weight:800}
 .add{padding:6px 14px}
 .qty{display:flex;align-items:center;gap:8px}
 .qty button{width:32px;height:32px;font-size:18px}
 .bar{position:fixed;inset:auto 0 0 0;z-index:6;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--ln)}
-.btn{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:688px;margin:0 auto;border:0;border-radius:14px;padding:14px 18px;background:var(--pr);color:#fff;font-weight:800;text-decoration:none}
+.btn{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:688px;margin:0 auto;border:0;border-radius:14px;padding:14px 18px;background:var(--pr);color:var(--tx);font-weight:800;text-decoration:none}
 .btn.dis{background:var(--ln);color:var(--mu);pointer-events:none}
-.back{position:fixed;inset:0;z-index:7;background:rgba(10,12,40,.55)}
+.back{position:fixed;inset:0;z-index:7;background:rgba(43,27,20,.55)}
 .sheet{position:fixed;inset:auto 0 0 0;z-index:8;max-height:85%;overflow:auto;background:var(--bg);border-radius:20px 20px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));max-width:720px;margin:0 auto}
 .line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--ln)}
 input,select{width:100%;padding:10px 12px;border:1px solid var(--ln);border-radius:10px;background:var(--sf);margin:4px 0 12px}
 label{display:block;font-weight:600;font-size:14px;color:var(--mu)}
-h2{font-size:20px;margin:0 0 10px}
+h2{font:700 20px/1.3 Georgia,"Times New Roman",Cairo,serif;margin:0 0 10px}
 .empty{padding:40px 16px;text-align:center;color:var(--mu)}
 .msg{color:var(--rd);font-size:14px;min-height:20px;margin:0 0 8px}
 .note{color:var(--mu);font-size:14px}
 .sec{padding:20px 0;border-bottom:1px solid var(--ln)}
-.hero{padding-top:36px}
-.hero h1{font-size:34px;line-height:1.15;margin:0 0 12px;font-weight:800}
+.hero{padding-top:28px}
+.hero h1{font:800 34px/1.15 Georgia,"Times New Roman",Cairo,serif;margin:0 0 12px}
 .hero p{color:var(--mu);margin:0 0 8px}
+.logo{display:block;border-radius:28px;margin:0 0 20px}
 .tabs{display:flex;gap:8px;margin:20px 0 12px}
 .tabs button{flex:1;padding:10px;border:1px solid var(--ln);border-radius:10px;background:var(--sf);font-weight:600}
-.tabs .on{background:var(--pr);color:#fff;border-color:var(--pr)}
+.tabs .on{background:var(--tx);color:var(--bg);border-color:var(--tx)}
 .arow{display:grid;grid-template-columns:84px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--ln);align-items:start}
 .th{display:block;cursor:pointer}
 .th img,.th .noimg{border-radius:12px;aspect-ratio:1;font-size:30px}
-.th small{display:block;text-align:center;color:var(--pr);font-weight:600;font-size:13px}
+.th small{display:block;text-align:center;color:var(--prd);font-weight:600;font-size:13px}
 .th input{display:none}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .sm{background:var(--sf);border:1px solid var(--ln);border-radius:8px;padding:4px 12px;font-size:14px;margin-inline-end:8px}
 .sm.d{color:var(--rd)}
+.lnk{background:none;border:0;color:var(--prd);text-decoration:underline;padding:0;font-weight:600;cursor:pointer}
 #qr{display:inline-block;padding:10px;background:#fff;border:1px solid var(--ln);border-radius:8px}
 </style>
 </head>
@@ -71,7 +76,8 @@ h2{font-size:20px;margin:0 0 10px}
 const $=s=>document.querySelector(s),A=$('#app');
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const CATS=[['ent','Entrées','المقبلات'],['pla','Plats','الأطباق'],['des','Desserts','الحلويات'],['boi','Boissons','المشروبات']];
-const STAR='<svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="8" width="24" height="24" fill="#fff"/><rect x="8" y="8" width="24" height="24" fill="#f0a92b" fill-opacity=".9" transform="rotate(45 20 20)"/></svg>';
+const STAR='<svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="#FFF4EA" stroke-width="4.5"/><path d="M13 20.5l5 5 9-11" fill="none" stroke="#F6AE2D" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const LOGO='data:image/png;base64,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';
 const api=async(u,m,b)=>{const r=await fetch(u,{method:m||'GET',headers:{'Content-Type':'application/json',Authorization:'Bearer '+(localStorage.getItem('tk')||'')},body:b?JSON.stringify(b):undefined});const j=await r.json().catch(()=>({}));if(!r.ok)throw j;return j};
 const slugify=v=>v.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const TT={fr:{sub:'Choisissez et commandez sur WhatsApp',add:'Ajouter',view:'Voir la commande',total:'Total',send:'Envoyer sur WhatsApp',who:'Votre nom ou numéro de table',empty:'Votre commande est vide.',yo:'Votre commande',off:'Épuisé',ml:'Table / nom',nf:'Ce restaurant n’existe pas.'},
@@ -81,12 +87,12 @@ ar:{sub:'اختر أطباقك واطلب عبر واتساب',add:'أضف',view
 function landing(){
  if(localStorage.getItem('tk')){location.replace('/admin');return}
  let m='up';
- const draw=()=>{A.innerHTML=`<div class="hd"><div class="in"><div class="brand">${STAR}<h1>Menu digital</h1></div></div></div><div class="wrap hero"><h1>Votre menu en ligne, avec photos, en 5 minutes</h1><p>Vos clients scannent le QR code, choisissent leurs plats et commandent sur WhatsApp. Menu en français et en arabe, prix en dirhams.</p><div class="tabs"><button data-m="up" class="${m==='up'?'on':''}">Créer mon menu</button><button data-m="in" class="${m==='in'?'on':''}">Me connecter</button></div><form id="f">${m==='up'?`<label for="n">Nom du restaurant</label><input id="n" required><label for="s">Votre lien (lettres, chiffres, tirets)</label><input id="s" required><label for="w">Numéro WhatsApp avec indicatif (ex. 212612345678)</label><input id="w" inputmode="numeric" required>`:''}<label for="e">Email</label><input id="e" type="email" required><label for="p">Mot de passe (6 caractères minimum)</label><input id="p" type="password" required><p class="msg" id="m"></p><button class="btn" type="submit"><span>${m==='up'?'Créer mon menu':'Me connecter'}</span></button></form></div>`};
+ const draw=()=>{A.innerHTML=`<div class="hd"><div class="in"><div class="brand">${STAR}<div><h1>Orderely</h1><p>Menu digital</p></div></div></div></div><div class="wrap hero"><img class="logo" src="${LOGO}" width="150" height="150" alt="Orderely, menu digital"><h1>Votre menu en ligne, avec photos, en 5 minutes</h1><p>Vos clients scannent le QR code, choisissent leurs plats et commandent sur WhatsApp. Menu en français et en arabe, prix en dirhams.</p><div class="tabs"><button data-m="up" class="${m==='up'?'on':''}">Créer mon menu</button><button data-m="in" class="${m==='in'?'on':''}">Me connecter</button></div><form id="f">${m==='up'?`<label for="n">Nom du restaurant</label><input id="n" required><label for="s">Votre lien (lettres, chiffres, tirets)</label><input id="s" required><label for="w">Numéro WhatsApp avec indicatif (ex. 212612345678)</label><input id="w" inputmode="numeric" required>`:''}<label for="e">Email</label><input id="e" type="email" required>${m==='fg'?'':`<label for="p">Mot de passe (6 caractères minimum)</label><input id="p" type="password" required>`}<p class="msg" id="m"></p><button class="btn" type="submit"><span>${m==='up'?'Créer mon menu':m==='fg'?'Envoyer le lien':'Me connecter'}</span></button></form>${m==='in'?'<p class="note" style="margin-top:14px"><button type="button" data-m="fg" class="lnk">Mot de passe oublié ?</button></p>':''}</div>`};
  A.onclick=e=>{const b=e.target.closest('[data-m]');if(b){m=b.dataset.m;draw()}};
  A.oninput=e=>{if(e.target.id==='n'&&!$('#s').dataset.m)$('#s').value=slugify(e.target.value);if(e.target.id==='s')e.target.dataset.m=1};
  A.onsubmit=async ev=>{ev.preventDefault();const g=i=>$('#'+i)?$('#'+i).value.trim():'';
-  try{const r=m==='up'?await api('/api/signup','POST',{name:g('n'),slug:g('s'),wa:g('w'),email:g('e'),password:$('#p').value}):await api('/api/login','POST',{email:g('e'),password:$('#p').value});localStorage.setItem('tk',r.token);location.href='/admin'}
-  catch(x){$('#m').textContent={exists:'Cet email ou ce lien est déjà utilisé.',invalid:'Vérifiez les champs (mot de passe : 6 caractères minimum).',login:'Email ou mot de passe incorrect.'}[x.error]||'Une erreur est survenue. Réessayez.'}};
+  try{if(m==='fg'){await api('/api/forgot','POST',{email:g('e')});$('#m').style.color='var(--prd)';$('#m').textContent='Si un compte existe avec cet email, un lien de réinitialisation vient d’être envoyé. Pensez à vérifier vos courriers indésirables.';return}const r=m==='up'?await api('/api/signup','POST',{name:g('n'),slug:g('s'),wa:g('w'),email:g('e'),password:$('#p').value}):await api('/api/login','POST',{email:g('e'),password:$('#p').value});localStorage.setItem('tk',r.token);location.href='/admin'}
+  catch(x){$('#m').textContent={exists:'Cet email ou ce lien est déjà utilisé.',invalid:'Vérifiez les champs (mot de passe : 6 caractères minimum).',login:'Email ou mot de passe incorrect.',many:'Trop de demandes. Réessayez plus tard.'}[x.error]||'Une erreur est survenue. Réessayez.'}};
  draw();
 }
 
@@ -132,7 +138,7 @@ async function menuPage(slug){
   const bar=cnt()?`<div class="bar"><button class="btn" data-a="sheet"><span>${t('view')} (${cnt()})</span><span>${mad(sum())}</span></button></div>`:'';
   const ok=num().length>6&&cnt();
   const sheet=S.sheet?`<div class="back" data-a="sheet"></div><div class="sheet" role="dialog" aria-label="${t('yo')}"><h2>${t('yo')}</h2>${cl().map(i=>`<div class="line"><div><b>${esc(nm(i))}</b><br><span class="note">${mad(i.price)}</span></div>${step(i)}</div>`).join('')||`<p class="empty">${t('empty')}</p>`}<label for="nm" style="margin-top:14px">${t('who')}</label><input id="nm" value="${esc(S.nm)}"><a id="send" class="btn ${ok?'':'dis'}" href="${ok?link():'#'}" target="_blank" rel="noopener"><span>${t('send')}</span><span>${mad(sum())}</span></a></div>`:'';
-  A.innerHTML=`<div class="hd"><div class="in"><div class="brand">${STAR}<div><h1>${esc(R.name)}</h1><p>${t('sub')}</p></div></div><button class="pill" data-a="lang">${S.lang==='fr'?'العربية':'Français'}</button></div></div><div class="chips">${chips}</div><div class="grid">${cards}</div>${bar}${sheet}`};
+  A.innerHTML=`<div class="hd"><div class="in"><div class="brand">${STAR}<div><h1>${esc(R.name)}</h1><p>${t('sub')}</p></div></div><button class="pill" data-a="lang">${S.lang==='fr'?'العربية':'Français'}</button></div></div><div class="chips">${chips}</div><div class="grid">${cards}</div><p class="powered">${S.lang==='ar'?'مدعوم من Orderely':'Propulsé par Orderely'}</p>${bar}${sheet}`};
  A.onclick=e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,v=b.dataset.v;
   if(a==='lang'){S.lang=S.lang==='fr'?'ar':'fr';localStorage.setItem('lg',S.lang)}
   else if(a==='cat')S.cat=v;
@@ -146,7 +152,18 @@ async function menuPage(slug){
 }
 
 const P=location.pathname.replace(/\/$/,'');
-P.indexOf('/r/')===0?menuPage(decodeURIComponent(P.split('/')[2])):P==='/admin'?adminPage():landing();
+function resetPage(){
+ A.innerHTML=`<div class="hd"><div class="in"><div class="brand">${STAR}<h1>Réinitialiser un mot de passe</h1></div></div></div><div class="wrap hero"><p>Page réservée au prestataire. Entrez la clé administrateur, l’email du restaurant et un nouveau mot de passe à lui communiquer.</p><form id="f"><label for="k">Clé administrateur</label><input id="k" type="password" required><label for="e">Email du restaurant</label><input id="e" type="email" required><label for="p">Nouveau mot de passe (6 caractères minimum)</label><input id="p" type="text" required><p class="msg" id="m"></p><button class="btn" type="submit"><span>Réinitialiser</span></button></form></div>`;
+ A.onsubmit=async ev=>{ev.preventDefault();const m=$('#m');try{await api('/api/reset','POST',{adminKey:$('#k').value,email:$('#e').value.trim(),password:$('#p').value});m.style.color='var(--prd)';m.textContent='Mot de passe modifié. Communiquez-le au restaurateur.'}catch(x){m.style.color='';m.textContent={key:'Clé administrateur incorrecte.',none:'Aucun restaurant avec cet email.',many:'Trop d’essais. Réessayez dans 15 minutes.',noadmin:'La clé ADMIN_KEY n’est pas configurée sur le serveur.',invalid:'Mot de passe : 6 caractères minimum.'}[x.error]||'Une erreur est survenue. Réessayez.'}};
+}
+function newPwPage(){
+ const t=new URLSearchParams(location.search).get('t')||'';
+ A.innerHTML=`<div class="hd"><div class="in"><div class="brand">${STAR}<h1>Nouveau mot de passe</h1></div></div></div><div class="wrap hero"><form id="f"><label for="p">Nouveau mot de passe (6 caractères minimum)</label><input id="p" type="password" required autocomplete="new-password"><label for="p2">Confirmer le mot de passe</label><input id="p2" type="password" required autocomplete="new-password"><p class="msg" id="m"></p><button class="btn" type="submit"><span>Enregistrer</span></button></form></div>`;
+ A.onsubmit=async ev=>{ev.preventDefault();const m=$('#m');if($('#p').value!==$('#p2').value){m.textContent='Les deux mots de passe ne sont pas identiques.';return}
+  try{await api('/api/reset-password','POST',{token:t,password:$('#p').value});$('#f').outerHTML='<p>Votre mot de passe a été modifié.</p><a class="btn" href="/"><span>Se connecter</span></a>'}
+  catch(x){m.textContent={invalid:'Mot de passe : 6 caractères minimum.',token:'Ce lien est invalide ou a expiré. Demandez-en un nouveau.',many:'Trop de tentatives. Réessayez plus tard.'}[x.error]||'Une erreur est survenue. Réessayez.'}};
+}
+P.indexOf('/r/')===0?menuPage(decodeURIComponent(P.split('/')[2])):P==='/admin'?adminPage():P==='/reset'?resetPage():P==='/nouveau-mot-de-passe'?newPwPage():landing();
 </script>
 </body>
 </html>

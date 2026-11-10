@@ -24,6 +24,7 @@ const verify = t => {
 const pub = r => ({ name: r.name, slug: r.slug, wa: r.wa, items: r.items });
 const app = express();
 app.disable('x-powered-by');
+app.set('trust proxy', 1);
 app.use(express.json({ limit: '3mb' }));
 const auth = (q, s, n) => {
   const r = verify((q.headers.authorization || '').replace('Bearer ', ''));
@@ -46,6 +47,70 @@ app.post('/api/login', (q, s) => {
   const r = db.restaurants.find(x => x.email === b.email);
   if (!r || hash(String(b.password || ''), r.salt) !== r.pw) return s.status(401).json({ error: 'login' });
   s.json({ token: sign(r.id) });
+});
+const sha = x => crypto.createHash('sha256').update(x).digest('hex');
+const hits = {};
+const limited = (k, max, ms) => {
+  const n = Date.now(), a = hits[k] = (hits[k] || []).filter(t => n - t < ms);
+  if (a.length >= max) return true;
+  a.push(n); return false;
+};
+async function sendMail(to, subject, text, html) {
+  const key = process.env.BREVO_API_KEY, from = process.env.MAIL_FROM;
+  if (!key || !from) { console.log('Email non configuré : définissez BREVO_API_KEY et MAIL_FROM'); return false; }
+  const r = await fetch(process.env.MAIL_API_URL || 'https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: { 'api-key': key, 'content-type': 'application/json', accept: 'application/json' },
+    body: JSON.stringify({ sender: { name: process.env.MAIL_NAME || 'Orderely', email: from }, to: [{ email: to }], subject, textContent: text, htmlContent: html })
+  });
+  if (!r.ok) console.log('Erreur envoi email', r.status, await r.text());
+  return r.ok;
+}
+app.post('/api/forgot', async (q, s) => {
+  if (limited('fi:' + q.ip, 10, 3600e3)) return s.status(429).json({ error: 'many' });
+  const email = String((q.body || {}).email || '').trim().toLowerCase();
+  const r = email && db.restaurants.find(x => x.email.toLowerCase() === email);
+  if (r && !limited('fe:' + email, 3, 3600e3)) {
+    try {
+      const tok = crypto.randomBytes(32).toString('hex');
+      r.resetHash = sha(tok); r.resetExp = Date.now() + 3600e3; save();
+      const base = (process.env.APP_URL || process.env.RENDER_EXTERNAL_URL || 'http://localhost:' + (process.env.PORT || 3000)).replace(/\/$/, '');
+      const link = base + '/nouveau-mot-de-passe?t=' + tok;
+      await sendMail(r.email, 'Réinitialisation de votre mot de passe',
+        'Bonjour,\n\nPour choisir un nouveau mot de passe, ouvrez ce lien (valable 1 heure) :\n' + link + '\n\nSi vous n’avez pas fait cette demande, ignorez ce message.',
+        '<p>Bonjour,</p><p>Pour choisir un nouveau mot de passe, cliquez sur ce lien (valable 1 heure) :</p><p><a href="' + link + '">Choisir un nouveau mot de passe</a></p><p>Si vous n’avez pas fait cette demande, ignorez ce message.</p>');
+    } catch (e) { console.log('Erreur mot de passe oublié :', e.message); }
+  }
+  s.json({ ok: true });
+});
+app.post('/api/reset-password', (q, s) => {
+  if (limited('rp:' + q.ip, 20, 3600e3)) return s.status(429).json({ error: 'many' });
+  const b = q.body || {};
+  if (String(b.password || '').length < 6) return s.status(400).json({ error: 'invalid' });
+  const h = sha(String(b.token || ''));
+  const r = db.restaurants.find(x => x.resetHash === h && x.resetExp > Date.now());
+  if (!r) return s.status(400).json({ error: 'token' });
+  r.salt = crypto.randomBytes(16).toString('hex');
+  r.pw = hash(String(b.password), r.salt);
+  delete r.resetHash; delete r.resetExp;
+  save(); s.json({ ok: true });
+});
+const fails = {};
+app.post('/api/reset', (q, s) => {
+  const now = Date.now();
+  const f = fails[q.ip] = (fails[q.ip] || []).filter(t => now - t < 15 * 60e3);
+  if (f.length >= 5) return s.status(429).json({ error: 'many' });
+  const key = process.env.ADMIN_KEY || '';
+  if (key.length < 12) return s.status(503).json({ error: 'noadmin' });
+  const b = q.body || {};
+  const A = Buffer.from(String(b.adminKey || '')), B = Buffer.from(key);
+  if (A.length !== B.length || !crypto.timingSafeEqual(A, B)) { f.push(now); return s.status(403).json({ error: 'key' }); }
+  const r = db.restaurants.find(x => x.email === b.email);
+  if (!r) return s.status(404).json({ error: 'none' });
+  if (String(b.password || '').length < 6) return s.status(400).json({ error: 'invalid' });
+  r.salt = crypto.randomBytes(16).toString('hex');
+  r.pw = hash(String(b.password), r.salt);
+  save(); s.json({ ok: true });
 });
 app.get('/api/me', auth, (q, s) => s.json(pub(q.r)));
 app.put('/api/me', auth, (q, s) => {
@@ -79,6 +144,6 @@ app.get('/api/menu/:slug', (q, s) => {
   r ? s.json(pub(r)) : s.status(404).json({ error: '404' });
 });
 app.use('/img', express.static(path.join(DATA, 'img'), { maxAge: '30d' }));
-app.get(['/', '/admin', '/r/:slug'], (q, s) => s.sendFile(path.join(__dirname, 'app.html')));
+app.get(['/', '/admin', '/reset', '/nouveau-mot-de-passe', '/r/:slug'], (q, s) => s.sendFile(path.join(__dirname, 'app.html')));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log('http://localhost:' + PORT));
