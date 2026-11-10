@@ -21,7 +21,18 @@ const verify = t => {
   if (Date.now() - Number(p[1]) > 30 * 864e5) return null;
   return db.restaurants.find(r => r.id === p[0]) || null;
 };
-const pub = r => ({ name: r.name, slug: r.slug, wa: r.wa, items: r.items });
+const normIg = v => {
+  v = String(v || '').trim(); if (!v) return '';
+  if (/^@?[A-Za-z0-9._]{1,30}$/.test(v)) return 'https://www.instagram.com/' + v.replace('@', '');
+  try { const u = new URL(/^https?:/i.test(v) ? v : 'https://' + v); if (/(^|\.)instagram\.com$/.test(u.hostname)) { u.protocol = 'https:'; return u.href.slice(0, 300); } } catch (e) {}
+  return '';
+};
+const normUrl = v => {
+  v = String(v || '').trim(); if (!v) return '';
+  try { const u = new URL(/^https?:/i.test(v) ? v : 'https://' + v); if (u.hostname.includes('.')) { u.protocol = 'https:'; return u.href.slice(0, 300); } } catch (e) {}
+  return '';
+};
+const pub = r => ({ name: r.name, slug: r.slug, wa: r.wa, ig: r.ig || '', review: r.review || '', items: r.items });
 const app = express();
 app.disable('x-powered-by');
 app.set('trust proxy', 1);
@@ -120,13 +131,15 @@ app.get('/api/export', auth, (q, s) => {
     return o;
   });
   s.setHeader('Content-Disposition', 'attachment; filename="seed.json"');
-  s.json({ name: r.name, slug: r.slug, wa: r.wa, items });
+  s.json({ name: r.name, slug: r.slug, wa: r.wa, ig: r.ig || '', review: r.review || '', items });
 });
 app.get('/api/me', auth, (q, s) => s.json(pub(q.r)));
 app.put('/api/me', auth, (q, s) => {
-  const { name, wa } = q.body || {};
+  const { name, wa, ig, review } = q.body || {};
   if (name) q.r.name = String(name).slice(0, 80);
   if (wa !== undefined) q.r.wa = String(wa).slice(0, 20);
+  if (ig !== undefined) q.r.ig = normIg(ig);
+  if (review !== undefined) q.r.review = normUrl(review);
   save(); s.json(pub(q.r));
 });
 app.put('/api/items', auth, (q, s) => {
@@ -169,7 +182,7 @@ app.get(['/', '/admin', '/reset', '/nouveau-mot-de-passe', '/r/:slug'], (q, s) =
     });
     if (db.restaurants.some(r => r.slug === d.slug || r.email.toLowerCase() === email)) return;
     const salt = crypto.randomBytes(16).toString('hex');
-    db.restaurants.push({ id: crypto.randomUUID(), name: d.name, slug: d.slug, wa: d.wa || '', email, salt, pw: hash(pw, salt),
+    db.restaurants.push({ id: crypto.randomUUID(), name: d.name, slug: d.slug, wa: d.wa || '', ig: normIg(d.ig), review: normUrl(d.review), email, salt, pw: hash(pw, salt),
       items: (d.items || []).map(i => { const o = Object.assign({}, i); delete o.imgData; return o; }) });
     save(); console.log('Restaurant de démonstration restauré :', d.slug);
   } catch (e) { console.log('Restauration ignorée :', e.message); }
