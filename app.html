@@ -98,7 +98,8 @@ function landing(){
 }
 
 /* ---------- Gestion du restaurateur ---------- */
-async function resize(file){const im=await createImageBitmap(file),k=Math.min(1,720/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);return c.toDataURL('image/jpeg',.8)}
+/* Réduit la photo à ~100 Ko max : 900 px de large au plus, puis baisse la qualité et la taille jusqu'à passer sous la limite. */
+async function resize(file){const im=await createImageBitmap(file);let max=900,q=.82,d='';for(let n=0;n<10;n++){const k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);d=c.toDataURL('image/jpeg',q);if((d.length-23)*.75<=100e3)break;if(q>.6)q-=.08;else max=Math.round(max*.85)}return d}
 async function adminPage(){
  let R;try{R=await api('/api/me')}catch(e){localStorage.removeItem('tk');location.replace('/');return}
  const url=location.origin+'/r/'+R.slug,st=t=>{$('#st').textContent=t};
