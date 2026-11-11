@@ -32,7 +32,14 @@ const normUrl = v => {
   try { const u = new URL(/^https?:/i.test(v) ? v : 'https://' + v); if (u.hostname.includes('.')) { u.protocol = 'https:'; return u.href.slice(0, 300); } } catch (e) {}
   return '';
 };
-const pub = r => ({ name: r.name, slug: r.slug, wa: r.wa, ig: r.ig || '', review: r.review || '', items: r.items });
+const PHOTOS = path.join(__dirname, 'photos');
+const slugify = t => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+const photoFor = name => {
+  const sl = slugify(name); if (!sl) return '';
+  for (const ext of ['jpg', 'jpeg', 'png', 'webp']) if (fs.existsSync(path.join(PHOTOS, sl + '.' + ext))) return '/photos/' + sl + '.' + ext;
+  return '';
+};
+const pub = r => ({ name: r.name, slug: r.slug, wa: r.wa, ig: r.ig || '', review: r.review || '', items: r.items.map(i => i.img ? i : Object.assign({}, i, { ph: photoFor(i.fr) })) });
 const app = express();
 app.disable('x-powered-by');
 app.set('trust proxy', 1);
@@ -193,6 +200,7 @@ app.get('/api/menu/:slug', (q, s) => {
   r ? s.json(pub(r)) : s.status(404).json({ error: '404' });
 });
 app.use('/img', express.static(path.join(DATA, 'img'), { maxAge: '30d' }));
+app.use('/photos', express.static(PHOTOS, { maxAge: '1d' }));
 app.get(['/', '/admin', '/reset', '/nouveau-mot-de-passe', '/r/:slug'], (q, s) => s.sendFile(path.join(__dirname, 'app.html')));
 (function seedDemo() {
   try {

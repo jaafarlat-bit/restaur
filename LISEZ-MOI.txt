@@ -1,0 +1,90 @@
+Dossier photos/ : une image par plat, nommee comme le plat (sans accents, minuscules, tirets).
+Ex : Harira -> harira.jpg ; Tajine poulet citron -> tajine-poulet-citron.jpg
+Formats : jpg, jpeg, png, webp. Remplacez le fichier pour changer l'image.
+
+Noms attendus (menu marocain) :
+harira.jpg  <-  Harira
+chorba-de-poisson.jpg  <-  Chorba de poisson
+bissara.jpg  <-  Bissara
+salade-marocaine.jpg  <-  Salade marocaine
+salade-de-carottes-au-cumin.jpg  <-  Salade de carottes au cumin
+salade-de-betteraves.jpg  <-  Salade de betteraves
+zaalouk.jpg  <-  Zaalouk
+taktouka.jpg  <-  Taktouka
+salade-de-poivrons-grilles.jpg  <-  Salade de poivrons grillés
+loubia-a-la-tomate.jpg  <-  Loubia à la tomate
+maakouda-galettes-de-pommes-de-terre.jpg  <-  Maakouda (galettes de pommes de terre)
+briouates-au-fromage.jpg  <-  Briouates au fromage
+briouates-a-la-viande-hachee.jpg  <-  Briouates à la viande hachée
+briouates-aux-crevettes.jpg  <-  Briouates aux crevettes
+pastilla-au-poulet.jpg  <-  Pastilla au poulet
+olives-marinees.jpg  <-  Olives marinées
+assiette-de-salades-marocaines.jpg  <-  Assiette de salades marocaines
+tajine-poulet-citron-et-olives.jpg  <-  Tajine poulet, citron et olives
+tajine-de-poulet-aux-legumes.jpg  <-  Tajine de poulet aux légumes
+tajine-d-agneau-aux-pruneaux.jpg  <-  Tajine d’agneau aux pruneaux
+tajine-de-veau-aux-artichauts-et-petits-pois.jpg  <-  Tajine de veau aux artichauts et petits pois
+tajine-de-b-uf-aux-oignons-et-raisins.jpg  <-  Tajine de bœuf aux oignons et raisins
+tajine-kefta-aux-ufs.jpg  <-  Tajine kefta aux œufs
+tajine-de-poisson-a-la-chermoula.jpg  <-  Tajine de poisson à la chermoula
+tajine-de-crevettes.jpg  <-  Tajine de crevettes
+tajine-de-legumes-vegetarien.jpg  <-  Tajine de légumes (végétarien)
+tajine-de-sardines.jpg  <-  Tajine de sardines
+couscous-royal.jpg  <-  Couscous royal
+couscous-aux-sept-legumes.jpg  <-  Couscous aux sept légumes
+couscous-tfaya-poulet-oignons-caramelises.jpg  <-  Couscous tfaya (poulet, oignons caramélisés)
+couscous-a-l-agneau.jpg  <-  Couscous à l’agneau
+couscous-au-poulet.jpg  <-  Couscous au poulet
+couscous-au-poisson.jpg  <-  Couscous au poisson
+seffa-medfouna.jpg  <-  Seffa medfouna
+tanjia-marrakchia.jpg  <-  Tanjia marrakchia
+rfissa.jpg  <-  Rfissa
+mrouzia-agneau-miel-et-amandes.jpg  <-  Mrouzia (agneau, miel et amandes)
+mechoui-d-agneau-la-part.jpg  <-  Méchoui d’agneau (la part)
+pastilla-aux-fruits-de-mer.jpg  <-  Pastilla aux fruits de mer
+poulet-m-hammer.jpg  <-  Poulet m’hammer
+kebda-mchermla-foie-a-la-chermoula.jpg  <-  Kebda mchermla (foie à la chermoula)
+brochettes-d-agneau.jpg  <-  Brochettes d’agneau
+brochettes-de-poulet.jpg  <-  Brochettes de poulet
+brochettes-mixtes.jpg  <-  Brochettes mixtes
+kefta-grillee.jpg  <-  Kefta grillée
+merguez-grillees.jpg  <-  Merguez grillées
+cotelettes-d-agneau-grillees.jpg  <-  Côtelettes d’agneau grillées
+grillades-mixtes-2-personnes.jpg  <-  Grillades mixtes (2 personnes)
+sardines-grillees.jpg  <-  Sardines grillées
+sardines-farcies-a-la-chermoula.jpg  <-  Sardines farcies à la chermoula
+dorade-grillee.jpg  <-  Dorade grillée
+calamars-frits.jpg  <-  Calamars frits
+plateau-de-poissons-grilles.jpg  <-  Plateau de poissons grillés
+cornes-de-gazelle.jpg  <-  Cornes de gazelle
+chebakia.jpg  <-  Chebakia
+sellou.jpg  <-  Sellou
+ghriba-aux-amandes.jpg  <-  Ghriba aux amandes
+mhancha.jpg  <-  Mhancha
+briouates-aux-amandes-et-miel.jpg  <-  Briouates aux amandes et miel
+baghrir-au-miel.jpg  <-  Baghrir au miel
+fekkas.jpg  <-  Fekkas
+sfenj.jpg  <-  Sfenj
+pastilla-au-lait.jpg  <-  Pastilla au lait
+riz-au-lait-a-la-cannelle.jpg  <-  Riz au lait à la cannelle
+orange-a-la-cannelle.jpg  <-  Orange à la cannelle
+dattes-fourrees-aux-amandes.jpg  <-  Dattes fourrées aux amandes
+salade-de-fruits-frais.jpg  <-  Salade de fruits frais
+assiette-de-patisseries-marocaines.jpg  <-  Assiette de pâtisseries marocaines
+the-a-la-menthe.jpg  <-  Thé à la menthe
+theiere-a-la-menthe-2-personnes.jpg  <-  Théière à la menthe (2 personnes)
+infusion-de-verveine.jpg  <-  Infusion de verveine
+cafe-noir.jpg  <-  Café noir
+cafe-au-lait.jpg  <-  Café au lait
+nous-nous.jpg  <-  Nous-nous
+chocolat-chaud.jpg  <-  Chocolat chaud
+jus-d-orange-frais.jpg  <-  Jus d’orange frais
+jus-d-avocat.jpg  <-  Jus d’avocat
+jus-de-grenade.jpg  <-  Jus de grenade
+citronnade-a-la-menthe.jpg  <-  Citronnade à la menthe
+jus-panache-avocat-banane-amandes.jpg  <-  Jus panaché (avocat, banane, amandes)
+lben.jpg  <-  Lben
+raib.jpg  <-  Raïb
+eau-minerale.jpg  <-  Eau minérale
+eau-gazeuse.jpg  <-  Eau gazeuse
+boisson-gazeuse.jpg  <-  Boisson gazeuse
