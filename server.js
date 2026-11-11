@@ -34,6 +34,8 @@ const normUrl = v => {
 };
 // Photos des plats : photos/ = vraies photos (prioritaires), photos/illustrations/ = dessins de secours.
 // Le nom du fichier est compar\u00e9 au nom du plat (accents, majuscules, espaces et _ ignor\u00e9s).
+// Jours de disponibilité d'un plat : 0 = dimanche … 6 = samedi. Liste vide = tous les jours.
+const cleanDays = d => Array.isArray(d) ? [...new Set(d.map(Number).filter(n => Number.isInteger(n) && n >= 0 && n <= 6))].sort() : [];
 const PHOTOS = path.join(__dirname, 'photos'), ILLUS = path.join(PHOTOS, 'illustrations');
 const IMG_EXT = /\.(jpe?g|jfif|png|webp|avif|gif)$/i;
 const STOP = new Set(['de', 'du', 'des', 'au', 'aux', 'a', 'la', 'le', 'les', 'et', 'd', 'l', 'en', 'with']);
@@ -171,7 +173,7 @@ app.post('/api/import', auth, jsonBig, (q, s) => {
       id: String(i.id || crypto.randomUUID()).slice(0, 40),
       cat: ['ent', 'pla', 'des', 'boi'].includes(i.cat) ? i.cat : 'pla',
       fr: String(i.fr || '').slice(0, 80), ar: String(i.ar || '').slice(0, 80),
-      price: Math.max(0, Number(i.price) || 0), on: i.on !== false, img
+      price: Math.max(0, Number(i.price) || 0), on: i.on !== false, img, days: cleanDays(i.days)
     });
   }
   r.items = items;
@@ -207,7 +209,8 @@ app.put('/api/items', auth, (q, s) => {
     cat: ['ent', 'pla', 'des', 'boi'].includes(i.cat) ? i.cat : 'pla',
     fr: String(i.fr || '').slice(0, 80), ar: String(i.ar || '').slice(0, 80),
     price: Math.max(0, Number(i.price) || 0), on: i.on !== false,
-    img: /^[a-f0-9]{32}\.jpg$/.test(i.img || '') ? i.img : ''
+    img: /^[a-f0-9]{32}\.jpg$/.test(i.img || '') ? i.img : '',
+    days: cleanDays(i.days)
   }));
   save(); s.json(pub(q.r));
 });
