@@ -1,0 +1,769 @@
+{
+ "items": [
+  {
+   "id": "m001",
+   "cat": "ent",
+   "fr": "Harira",
+   "ar": "الحريرة",
+   "price": 25,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m002",
+   "cat": "ent",
+   "fr": "Chorba de poisson",
+   "ar": "شربة السمك",
+   "price": 40,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m003",
+   "cat": "ent",
+   "fr": "Bissara",
+   "ar": "البيصارة",
+   "price": 20,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m004",
+   "cat": "ent",
+   "fr": "Salade marocaine",
+   "ar": "سلطة مغربية",
+   "price": 30,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m005",
+   "cat": "ent",
+   "fr": "Salade de carottes au cumin",
+   "ar": "سلطة الجزر بالكمون",
+   "price": 25,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m006",
+   "cat": "ent",
+   "fr": "Salade de betteraves",
+   "ar": "سلطة الشمندر",
+   "price": 25,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m007",
+   "cat": "ent",
+   "fr": "Zaalouk",
+   "ar": "زعلوك",
+   "price": 35,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m008",
+   "cat": "ent",
+   "fr": "Taktouka",
+   "ar": "تقتوقة",
+   "price": 35,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m009",
+   "cat": "ent",
+   "fr": "Salade de poivrons grillés",
+   "ar": "سلطة الفلفل المشوي",
+   "price": 30,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m010",
+   "cat": "ent",
+   "fr": "Loubia à la tomate",
+   "ar": "لوبيا بالطماطم",
+   "price": 30,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m011",
+   "cat": "ent",
+   "fr": "Maakouda (galettes de pommes de terre)",
+   "ar": "معقودة",
+   "price": 25,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m012",
+   "cat": "ent",
+   "fr": "Briouates au fromage",
+   "ar": "بريوات بالجبن",
+   "price": 40,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m013",
+   "cat": "ent",
+   "fr": "Briouates à la viande hachée",
+   "ar": "بريوات بالكفتة",
+   "price": 45,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m014",
+   "cat": "ent",
+   "fr": "Briouates aux crevettes",
+   "ar": "بريوات بالقمرون",
+   "price": 55,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m015",
+   "cat": "ent",
+   "fr": "Pastilla au poulet",
+   "ar": "بسطيلة بالدجاج",
+   "price": 70,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m016",
+   "cat": "ent",
+   "fr": "Olives marinées",
+   "ar": "زيتون متبل",
+   "price": 20,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m017",
+   "cat": "ent",
+   "fr": "Assiette de salades marocaines",
+   "ar": "طبق السلطات المغربية",
+   "price": 55,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m018",
+   "cat": "pla",
+   "fr": "Tajine poulet, citron et olives",
+   "ar": "طاجين الدجاج بالليمون والزيتون",
+   "price": 90,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m019",
+   "cat": "pla",
+   "fr": "Tajine de poulet aux légumes",
+   "ar": "طاجين الدجاج بالخضر",
+   "price": 85,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m020",
+   "cat": "pla",
+   "fr": "Tajine d’agneau aux pruneaux",
+   "ar": "طاجين لحم الغنم بالبرقوق",
+   "price": 120,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m021",
+   "cat": "pla",
+   "fr": "Tajine de veau aux artichauts et petits pois",
+   "ar": "طاجين العجل بالخرشوف والجلبانة",
+   "price": 115,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m022",
+   "cat": "pla",
+   "fr": "Tajine de bœuf aux oignons et raisins",
+   "ar": "طاجين البقر بالبصل والزبيب",
+   "price": 110,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m023",
+   "cat": "pla",
+   "fr": "Tajine kefta aux œufs",
+   "ar": "طاجين الكفتة بالبيض",
+   "price": 70,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m024",
+   "cat": "pla",
+   "fr": "Tajine de poisson à la chermoula",
+   "ar": "طاجين السمك بالشرمولة",
+   "price": 110,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m025",
+   "cat": "pla",
+   "fr": "Tajine de crevettes",
+   "ar": "طاجين القمرون",
+   "price": 120,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m026",
+   "cat": "pla",
+   "fr": "Tajine de légumes (végétarien)",
+   "ar": "طاجين الخضر (نباتي)",
+   "price": 65,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m027",
+   "cat": "pla",
+   "fr": "Tajine de sardines",
+   "ar": "طاجين السردين",
+   "price": 60,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m028",
+   "cat": "pla",
+   "fr": "Couscous royal",
+   "ar": "كسكس رويال",
+   "price": 120,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m029",
+   "cat": "pla",
+   "fr": "Couscous aux sept légumes",
+   "ar": "كسكس بسبع خضار",
+   "price": 85,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m030",
+   "cat": "pla",
+   "fr": "Couscous tfaya (poulet, oignons caramélisés)",
+   "ar": "كسكس تفاية بالدجاج",
+   "price": 100,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m031",
+   "cat": "pla",
+   "fr": "Couscous à l’agneau",
+   "ar": "كسكس بلحم الغنم",
+   "price": 115,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m032",
+   "cat": "pla",
+   "fr": "Couscous au poulet",
+   "ar": "كسكس بالدجاج",
+   "price": 90,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m033",
+   "cat": "pla",
+   "fr": "Couscous au poisson",
+   "ar": "كسكس بالسمك",
+   "price": 110,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m034",
+   "cat": "pla",
+   "fr": "Seffa medfouna",
+   "ar": "سفة مدفونة",
+   "price": 95,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m035",
+   "cat": "pla",
+   "fr": "Tanjia marrakchia",
+   "ar": "طنجية مراكشية",
+   "price": 110,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m036",
+   "cat": "pla",
+   "fr": "Rfissa",
+   "ar": "الرفيسة",
+   "price": 100,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m037",
+   "cat": "pla",
+   "fr": "Mrouzia (agneau, miel et amandes)",
+   "ar": "المروزية",
+   "price": 125,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m038",
+   "cat": "pla",
+   "fr": "Méchoui d’agneau (la part)",
+   "ar": "مشوي الغنم (حصة)",
+   "price": 140,
+   "on": false,
+   "img": ""
+  },
+  {
+   "id": "m039",
+   "cat": "pla",
+   "fr": "Pastilla aux fruits de mer",
+   "ar": "بسطيلة بالمأكولات البحرية",
+   "price": 130,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m040",
+   "cat": "pla",
+   "fr": "Poulet m’hammer",
+   "ar": "دجاج محمر",
+   "price": 95,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m041",
+   "cat": "pla",
+   "fr": "Kebda mchermla (foie à la chermoula)",
+   "ar": "كبدة مشرملة",
+   "price": 60,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m042",
+   "cat": "pla",
+   "fr": "Brochettes d’agneau",
+   "ar": "أسياخ لحم الغنم",
+   "price": 80,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m043",
+   "cat": "pla",
+   "fr": "Brochettes de poulet",
+   "ar": "أسياخ الدجاج",
+   "price": 70,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m044",
+   "cat": "pla",
+   "fr": "Brochettes mixtes",
+   "ar": "أسياخ مشكلة",
+   "price": 80,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m045",
+   "cat": "pla",
+   "fr": "Kefta grillée",
+   "ar": "كفتة مشوية",
+   "price": 70,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m046",
+   "cat": "pla",
+   "fr": "Merguez grillées",
+   "ar": "مرقاز مشوي",
+   "price": 60,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m047",
+   "cat": "pla",
+   "fr": "Côtelettes d’agneau grillées",
+   "ar": "ريش الغنم المشوية",
+   "price": 130,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m048",
+   "cat": "pla",
+   "fr": "Grillades mixtes (2 personnes)",
+   "ar": "مشويات مشكلة (لشخصين)",
+   "price": 220,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m049",
+   "cat": "pla",
+   "fr": "Sardines grillées",
+   "ar": "سردين مشوي",
+   "price": 60,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m050",
+   "cat": "pla",
+   "fr": "Sardines farcies à la chermoula",
+   "ar": "سردين محشي بالشرمولة",
+   "price": 70,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m051",
+   "cat": "pla",
+   "fr": "Dorade grillée",
+   "ar": "دوراد مشوي",
+   "price": 120,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m052",
+   "cat": "pla",
+   "fr": "Calamars frits",
+   "ar": "كلمار مقلي",
+   "price": 90,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m053",
+   "cat": "pla",
+   "fr": "Plateau de poissons grillés",
+   "ar": "طبق السمك المشوي",
+   "price": 150,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m054",
+   "cat": "des",
+   "fr": "Cornes de gazelle",
+   "ar": "كعب الغزال",
+   "price": 35,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m055",
+   "cat": "des",
+   "fr": "Chebakia",
+   "ar": "الشباكية",
+   "price": 30,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m056",
+   "cat": "des",
+   "fr": "Sellou",
+   "ar": "سلو",
+   "price": 35,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m057",
+   "cat": "des",
+   "fr": "Ghriba aux amandes",
+   "ar": "غريبة باللوز",
+   "price": 30,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m058",
+   "cat": "des",
+   "fr": "Mhancha",
+   "ar": "المحنشة",
+   "price": 45,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m059",
+   "cat": "des",
+   "fr": "Briouates aux amandes et miel",
+   "ar": "بريوات باللوز والعسل",
+   "price": 40,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m060",
+   "cat": "des",
+   "fr": "Baghrir au miel",
+   "ar": "بغرير بالعسل",
+   "price": 35,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m061",
+   "cat": "des",
+   "fr": "Fekkas",
+   "ar": "الفقاص",
+   "price": 25,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m062",
+   "cat": "des",
+   "fr": "Sfenj",
+   "ar": "السفنج",
+   "price": 20,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m063",
+   "cat": "des",
+   "fr": "Pastilla au lait",
+   "ar": "بسطيلة بالحليب",
+   "price": 45,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m064",
+   "cat": "des",
+   "fr": "Riz au lait à la cannelle",
+   "ar": "أرز بالحليب والقرفة",
+   "price": 30,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m065",
+   "cat": "des",
+   "fr": "Orange à la cannelle",
+   "ar": "برتقال بالقرفة",
+   "price": 30,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m066",
+   "cat": "des",
+   "fr": "Dattes fourrées aux amandes",
+   "ar": "تمر محشو باللوز",
+   "price": 35,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m067",
+   "cat": "des",
+   "fr": "Salade de fruits frais",
+   "ar": "سلطة فواكه",
+   "price": 30,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m068",
+   "cat": "des",
+   "fr": "Assiette de pâtisseries marocaines",
+   "ar": "طبق الحلويات المغربية",
+   "price": 55,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m069",
+   "cat": "boi",
+   "fr": "Thé à la menthe",
+   "ar": "أتاي بالنعناع",
+   "price": 20,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m070",
+   "cat": "boi",
+   "fr": "Théière à la menthe (2 personnes)",
+   "ar": "براد أتاي لشخصين",
+   "price": 35,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m071",
+   "cat": "boi",
+   "fr": "Infusion de verveine",
+   "ar": "لويزة",
+   "price": 20,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m072",
+   "cat": "boi",
+   "fr": "Café noir",
+   "ar": "قهوة سوداء",
+   "price": 18,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m073",
+   "cat": "boi",
+   "fr": "Café au lait",
+   "ar": "قهوة بالحليب",
+   "price": 20,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m074",
+   "cat": "boi",
+   "fr": "Nous-nous",
+   "ar": "نص نص",
+   "price": 20,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m075",
+   "cat": "boi",
+   "fr": "Chocolat chaud",
+   "ar": "شوكولا ساخنة",
+   "price": 25,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m076",
+   "cat": "boi",
+   "fr": "Jus d’orange frais",
+   "ar": "عصير البرتقال",
+   "price": 25,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m077",
+   "cat": "boi",
+   "fr": "Jus d’avocat",
+   "ar": "عصير الأفوكا",
+   "price": 30,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m078",
+   "cat": "boi",
+   "fr": "Jus de grenade",
+   "ar": "عصير الرمان",
+   "price": 30,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m079",
+   "cat": "boi",
+   "fr": "Citronnade à la menthe",
+   "ar": "ليموناضة بالنعناع",
+   "price": 25,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m080",
+   "cat": "boi",
+   "fr": "Jus panaché (avocat, banane, amandes)",
+   "ar": "عصير مشكل (أفوكا وموز ولوز)",
+   "price": 35,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m081",
+   "cat": "boi",
+   "fr": "Lben",
+   "ar": "اللبن",
+   "price": 15,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m082",
+   "cat": "boi",
+   "fr": "Raïb",
+   "ar": "الرايب",
+   "price": 15,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m083",
+   "cat": "boi",
+   "fr": "Eau minérale",
+   "ar": "ماء معدني",
+   "price": 10,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m084",
+   "cat": "boi",
+   "fr": "Eau gazeuse",
+   "ar": "ماء غازي",
+   "price": 15,
+   "on": true,
+   "img": ""
+  },
+  {
+   "id": "m085",
+   "cat": "boi",
+   "fr": "Boisson gazeuse",
+   "ar": "مشروب غازي",
+   "price": 15,
+   "on": true,
+   "img": ""
+  }
+ ]
+}

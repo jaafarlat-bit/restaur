@@ -36,7 +36,8 @@ const pub = r => ({ name: r.name, slug: r.slug, wa: r.wa, ig: r.ig || '', review
 const app = express();
 app.disable('x-powered-by');
 app.set('trust proxy', 1);
-app.use(express.json({ limit: '3mb' }));
+const jsonSmall = express.json({ limit: '3mb' }), jsonBig = express.json({ limit: '25mb' });
+app.use((q, s, n) => (q.path === '/api/import' ? n() : jsonSmall(q, s, n)));
 const auth = (q, s, n) => {
   const r = verify((q.headers.authorization || '').replace('Bearer ', ''));
   if (!r) return s.status(401).json({ error: 'auth' });
@@ -122,6 +123,31 @@ app.post('/api/reset', (q, s) => {
   r.salt = crypto.randomBytes(16).toString('hex');
   r.pw = hash(String(b.password), r.salt);
   save(); s.json({ ok: true });
+});
+app.post('/api/import', auth, jsonBig, (q, s) => {
+  const b = q.body || {};
+  if (!Array.isArray(b.items) || b.items.length > 300) return s.status(400).json({ error: 'invalid' });
+  const r = q.r, items = [];
+  for (const i of b.items) {
+    let img = '';
+    const m = /^data:image\/jpeg;base64,([A-Za-z0-9+/=]+)$/.exec(String(i.imgData || ''));
+    if (m) {
+      const buf = Buffer.from(m[1], 'base64');
+      if (buf.length <= 600e3 && buf.length > 0) { img = crypto.randomBytes(16).toString('hex') + '.jpg'; fs.writeFileSync(path.join(DATA, 'img', img), buf); }
+    }
+    items.push({
+      id: String(i.id || crypto.randomUUID()).slice(0, 40),
+      cat: ['ent', 'pla', 'des', 'boi'].includes(i.cat) ? i.cat : 'pla',
+      fr: String(i.fr || '').slice(0, 80), ar: String(i.ar || '').slice(0, 80),
+      price: Math.max(0, Number(i.price) || 0), on: i.on !== false, img
+    });
+  }
+  r.items = items;
+  if (b.name) r.name = String(b.name).slice(0, 80);
+  if (b.wa !== undefined) r.wa = String(b.wa).slice(0, 20);
+  if (b.ig !== undefined) r.ig = normIg(b.ig);
+  if (b.review !== undefined) r.review = normUrl(b.review);
+  save(); s.json(pub(r));
 });
 app.get('/api/export', auth, (q, s) => {
   const r = q.r;
