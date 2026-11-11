@@ -1,8 +1,14 @@
-Dossier photos/ : une image par plat, nommee comme le plat (sans accents, minuscules, tirets).
-Ex : Harira -> harira.jpg ; Tajine poulet citron -> tajine-poulet-citron.jpg
-Formats : jpg, jpeg, png, webp. Remplacez le fichier pour changer l'image.
+PHOTOS DES PLATS
+- photos/ : vos VRAIES photos. Elles sont prioritaires.
+  Nommez le fichier comme le plat ; accents, majuscules, espaces et _ sont ignores.
+  Ex : "Rfissa" -> rfissa.jfif ; "Salade marocaine" -> salade marocaine.jpg
+  Un nom plus court marche aussi : taj_kefta.jfif -> "Tajine kefta aux oeufs",
+  couscous.jfif -> tous les couscous qui n'ont pas leur propre photo.
+- photos/illustrations/ : dessins de secours, utilises seulement s'il n'y a pas de vraie photo.
+Formats : jpg, jpeg, jfif, png, webp, avif, gif.
+Une photo ajoutee par le restaurant dans l'espace de gestion passe toujours avant ces fichiers.
 
-Noms attendus (menu marocain) :
+Noms des dessins (photos/illustrations/, menu marocain) :
 harira.jpg  <-  Harira
 chorba-de-poisson.jpg  <-  Chorba de poisson
 bissara.jpg  <-  Bissara

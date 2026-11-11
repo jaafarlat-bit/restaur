@@ -32,12 +32,37 @@ const normUrl = v => {
   try { const u = new URL(/^https?:/i.test(v) ? v : 'https://' + v); if (u.hostname.includes('.')) { u.protocol = 'https:'; return u.href.slice(0, 300); } } catch (e) {}
   return '';
 };
-const PHOTOS = path.join(__dirname, 'photos');
+// Photos des plats : photos/ = vraies photos (prioritaires), photos/illustrations/ = dessins de secours.
+// Le nom du fichier est compar\u00e9 au nom du plat (accents, majuscules, espaces et _ ignor\u00e9s).
+const PHOTOS = path.join(__dirname, 'photos'), ILLUS = path.join(PHOTOS, 'illustrations');
+const IMG_EXT = /\.(jpe?g|jfif|png|webp|avif|gif)$/i;
+const STOP = new Set(['de', 'du', 'des', 'au', 'aux', 'a', 'la', 'le', 'les', 'et', 'd', 'l', 'en', 'with']);
 const slugify = t => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+const words = sl => sl.split('-').filter(w => w && !STOP.has(w));
+let photoIdx = null, photoStamp = '';
+const scanDir = (dir, url) => { try { return fs.readdirSync(dir).filter(f => IMG_EXT.test(f)).map(f => ({ url: url + encodeURIComponent(f), sl: slugify(f.replace(IMG_EXT, '')), size: fs.statSync(path.join(dir, f)).size })); } catch (e) { return []; } };
+const photoIndex = () => {
+  let stamp = ''; try { stamp = fs.statSync(PHOTOS).mtimeMs + '/' + fs.statSync(ILLUS).mtimeMs; } catch (e) {}
+  if (!photoIdx || stamp !== photoStamp) {
+    photoIdx = { real: scanDir(PHOTOS, '/photos/').map(p => Object.assign(p, { w: words(p.sl) })), illus: scanDir(ILLUS, '/photos/illustrations/') };
+    photoStamp = stamp;
+  }
+  return photoIdx;
+};
 const photoFor = name => {
   const sl = slugify(name); if (!sl) return '';
-  for (const ext of ['jpg', 'jpeg', 'png', 'webp']) if (fs.existsSync(path.join(PHOTOS, sl + '.' + ext))) return '/photos/' + sl + '.' + ext;
-  return '';
+  const { real, illus } = photoIndex(), dw = words(sl), big = (a, b) => b.size - a.size;
+  const exact = real.filter(p => p.sl === sl).sort(big)[0];
+  if (exact) return exact.url;
+  // Correspondance souple : chaque mot du fichier doit commencer un mot du plat (ex. \u00ab taj_kefta \u00bb \u2192 \u00ab Tajine kefta aux \u0153ufs \u00bb).
+  let best = null, bestN = 0;
+  for (const p of real) {
+    if (!p.w.length || !p.w.every(w => dw.some(d => d.startsWith(w)))) continue;
+    if (p.w.length > bestN || (p.w.length === bestN && p.size > best.size)) { best = p; bestN = p.w.length; }
+  }
+  if (best) return best.url;
+  const ill = illus.find(p => p.sl === sl);
+  return ill ? ill.url : '';
 };
 const pub = r => ({ name: r.name, slug: r.slug, wa: r.wa, ig: r.ig || '', review: r.review || '', items: r.items.map(i => i.img ? i : Object.assign({}, i, { ph: photoFor(i.fr) })) });
 const app = express();
@@ -200,7 +225,7 @@ app.get('/api/menu/:slug', (q, s) => {
   r ? s.json(pub(r)) : s.status(404).json({ error: '404' });
 });
 app.use('/img', express.static(path.join(DATA, 'img'), { maxAge: '30d' }));
-app.use('/photos', express.static(PHOTOS, { maxAge: '1d' }));
+app.use('/photos', express.static(PHOTOS, { maxAge: '1d', setHeaders: (s, f) => { if (/\.jfif$/i.test(f)) s.setHeader('Content-Type', 'image/jpeg'); } }));
 app.get(['/', '/admin', '/reset', '/nouveau-mot-de-passe', '/r/:slug'], (q, s) => s.sendFile(path.join(__dirname, 'app.html')));
 (function seedDemo() {
   try {
