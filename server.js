@@ -223,6 +223,33 @@ app.post('/api/photo', auth, (q, s) => {
   fs.writeFileSync(path.join(DATA, 'img', f), buf);
   s.json({ img: f });
 });
+// Historique : chaque commande (ou ajout) et chaque demande d'addition envoyée depuis le menu est enregistrée.
+// Les prix sont repris du menu du serveur (on ne fait pas confiance au téléphone). Conservation : 180 jours.
+app.post('/api/order/:slug', (q, s) => {
+  const r = db.restaurants.find(x => x.slug === q.params.slug);
+  if (!r) return s.status(404).json({ error: '404' });
+  if (limited('ord:' + q.ip, 120, 3600e3)) return s.status(429).json({ error: 'many' });
+  const b = q.body || {}, sid = String(b.sid || '');
+  if (!/^[A-Za-z0-9-]{8,40}$/.test(sid)) return s.status(400).json({ error: 'invalid' });
+  const ev = { t: Date.now(), sid, table: String(b.table || '').trim().slice(0, 20) };
+  if (b.bill) { ev.kind = 'bill'; ev.pay = b.bill.pay === 'cb' ? 'cb' : 'cash'; }
+  else {
+    ev.kind = 'order'; ev.lines = [];
+    for (const l of Array.isArray(b.lines) ? b.lines.slice(0, 100) : []) {
+      const it = r.items.find(i => i.id === l.id), qn = Math.min(50, Math.max(0, parseInt(l.q, 10) || 0));
+      if (it && qn) ev.lines.push({ id: it.id, fr: it.fr, ar: it.ar, p: it.price, q: qn });
+    }
+    if (!ev.lines.length) return s.status(400).json({ error: 'invalid' });
+    ev.total = ev.lines.reduce((a, l) => a + l.p * l.q, 0);
+  }
+  const old = Date.now() - 180 * 864e5;
+  r.orders = (r.orders || []).filter(o => o.t > old);
+  r.orders.push(ev); save(); s.json({ ok: true });
+});
+app.get('/api/orders', auth, (q, s) => {
+  const from = Number(q.query.from) || Date.now() - 864e5;
+  s.json((q.r.orders || []).filter(o => o.t >= from));
+});
 app.get('/api/menu/:slug', (q, s) => {
   const r = db.restaurants.find(x => x.slug === q.params.slug);
   r ? s.json(pub(r)) : s.status(404).json({ error: '404' });
